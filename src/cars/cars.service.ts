@@ -19,4 +19,13 @@ export class CarsService {
       model: 'LongWay',
     },
   ];
+
+  findAll() {
+    return this.cars;
+  }
+
+  findOneById(id: number) {
+    const car = this.cars.find((car) => car.id === id);
+    return car;
+  }
 }
