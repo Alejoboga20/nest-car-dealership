@@ -20,7 +20,7 @@ export class CarsController {
   }
 
   @Get('/:id')
-  gerCarById(@Param('id', ParseIntPipe) id: number) {
+  gerCarById(@Param('id') id: string) {
     return this.carsService.findOneById(id);
   }
 
@@ -35,7 +35,7 @@ export class CarsController {
   }
 
   @Delete('/:id')
-  deleteCar(@Param('id', ParseIntPipe) id: number) {
+  deleteCar(@Param('id') id: string) {
     return this.carsService.findOneById(id);
   }
 }
