@@ -5,15 +5,18 @@ export class CarsService {
   private cars = [
     {
       id: 1,
-      make: 'Toyota',
+      brand: 'Toyota',
+      model: 'Corolla',
     },
     {
       id: 2,
-      make: 'Ford',
+      brand: 'Ford',
+      model: 'Focus',
     },
     {
       id: 3,
-      make: 'BMW',
+      brand: 'BMW',
+      model: 'Basic',
     },
   ];
 
@@ -27,5 +30,17 @@ export class CarsService {
     if (!car) throw new NotFoundException(`Car with id: ${id} not found`);
 
     return car;
+  }
+
+  create(car: any) {
+    return car;
+  }
+
+  update(id: number, car: any) {
+    return { id, car };
+  }
+
+  delete(id: number) {
+    return id;
   }
 }
