@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 import { Car } from './interfaces/car.interface';
 import { CreateCarDto } from './dto/create-car.dto';
@@ -48,6 +52,9 @@ export class CarsService {
 
   update(id: string, updateCarDto: UpdateCarDto) {
     const carToUpdate = this.findOneById(id);
+
+    if (updateCarDto.id && updateCarDto.id !== id)
+      throw new BadRequestException('Id param and body do not match');
 
     this.cars = this.cars.map((car) =>
       car.id === id ? { ...car, ...updateCarDto } : car,
